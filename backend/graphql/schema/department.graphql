@@ -25,10 +25,10 @@ type Mutation {
 }
 
 input CreateDepartmentInput {
-    teamLead: Member!,
+    teamLead: Member,
 	name: String!,
-	lastMilestone: String!,
-	status: String!
+	lastMilestone: String,
+	status: String
 }
 
 input ChangeTeamLeadInput {
