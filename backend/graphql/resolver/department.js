@@ -6,7 +6,7 @@ const {department,
     changeTeamLead,
     teamLead,} = require('../../controllers/department')
 
-export default {
+module.exports={
     Query: {
         department: department,
         departments: departments

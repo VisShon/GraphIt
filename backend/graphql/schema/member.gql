@@ -7,7 +7,7 @@ type Member{
 
 type Update{
     message: String,
-    time: Date,
+    time: String,
 }
 
 type Query {

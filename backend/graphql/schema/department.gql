@@ -7,9 +7,9 @@ type Department{
 }
 
 enum Status {
-	NEW = "first meeting done",
-	INPROGRESS = "In Progress",
-	COMPLETED= "Task completed and team is free",
+	NEW,
+	INPROGRESS,
+	COMPLETE,
 }
 
 type Query {
@@ -18,10 +18,10 @@ type Query {
 }
 
 type Mutation {
-    addDepartment:(department:CreateDepartmentInput)Department!,
-	updateDepartment:(_id:ID!,department:UpdateDepartmentInput):Department!,
+    addDepartment(department:CreateDepartmentInput):Department!,
+	updateDepartment(_id:ID!,department:UpdateDepartmentInput):Department!,
 	changeTeamLead(_id:ID!,department:ChangeTeamLeadInput):Department!,
-    deleteDepartment:(_id:ID!):Department!
+    deleteDepartment(_id:ID!):Department!
 }
 
 input CreateDepartmentInput {

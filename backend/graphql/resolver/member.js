@@ -4,7 +4,7 @@ const {member,
   updateMember,
   deleteMember,} = require('../../controllers/member')
 
-export default {
+module.exports={
   Query: {
     member: member,
     members:members,
