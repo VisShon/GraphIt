@@ -1,0 +1,42 @@
+type Department{
+	_id: ID!,
+	teamLead: Member,
+	name: String!,
+	lastMilestone: String,
+	status: String
+}
+
+enum Status {
+	NEW = "first meeting done",
+	INPROGRESS = "In Progress",
+	COMPLETED= "Task completed and team is free",
+}
+
+type Query {
+	departments:[Department],
+	department(_id:ID!): Department,
+}
+
+type Mutation {
+    addDepartment:(department:CreateDepartmentInput)Department!,
+	updateDepartment:(_id:ID!,department:UpdateDepartmentInput):Department!,
+	changeTeamLead(_id:ID!,department:ChangeTeamLeadInput):Department!,
+    deleteDepartment:(_id:ID!):Department!
+}
+
+input CreateDepartmentInput {
+    teamLead: Member!,
+	name: String!,
+	lastMilestone: String!,
+	status: String!
+}
+
+input ChangeTeamLeadInput {
+    teamLead: Member!,
+}
+  
+input UpdateDepartmentInput {
+	name: String,
+	lastMilestone: String,
+	status: String
+} 

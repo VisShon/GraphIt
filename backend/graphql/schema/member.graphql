@@ -1,0 +1,34 @@
+type Member{
+	_id:ID!,
+	name: String!,
+	email: String,
+	phone: String,
+}
+
+type Update{
+    message: String,
+    time: Date,
+}
+
+type Query {
+	members:[Member],
+	member(_id:ID!): Member,
+}
+
+type Mutation {
+	addMember(user:CreateMemberInput):Member!,
+	updateMember(_id:ID!,user:UpdateMemberInput):Member!,
+	deleteMember(_id:ID!):Member!,
+}
+
+input CreateMemberInput {
+    name: String!,
+	email: String!,
+	phone: String!,
+}
+  
+input UpdateMemberInput {
+    name: String,
+	email: String,
+	phone: String,
+} 
