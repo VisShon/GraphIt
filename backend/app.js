@@ -7,7 +7,8 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 
 const {graphqlHTTP} = require('graphql');
-const schema = require('./graphql/schema');
+const {schema} = require('./graphql');
+const connectDB = require('./config/db');
 
 var app = express();
 
@@ -15,6 +16,8 @@ var corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200
 }
+
+connectDB();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,7 +29,6 @@ app.use('/', indexRouter);
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: process.env.NODE_ENV !== 'production'
-    
 }));
 
 module.exports = {
