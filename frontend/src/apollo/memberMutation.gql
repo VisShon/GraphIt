@@ -1,0 +1,27 @@
+mutation addMember($name:String,$email:String,$phone:String){
+    addMember(member:{name:name,email:email,phone:phone}){
+        _id,
+        name,
+        email,
+        phone,
+    }
+}
+
+mutation updateMember($id:ID!,$name:String,$email:String,$phone:String){
+    updateMember(_id:$id,member:{name:name,email:email,phone:phone}){
+        _id,
+        name,
+        email,
+        phone,
+    }
+}
+
+mutation deleteMember($id:ID!){
+    updateMember(_id:$id){
+        _id,
+        name,
+        email,
+        phone,
+    }
+}
+

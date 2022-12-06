@@ -1,10 +1,10 @@
-const Member = require('./member');
+const Member = require('../models/Member');
 
-const member = async ({ _id },) => {
+const member = async (parent,{ _id },) => {
     return await Member.findOne({ _id });
 }
 
-const members = async () => {
+const members = async (parent,args) => {
     const members = await Member.find({}).populate()
     return members.map(member => ({
     _id: member._id.toString(),
@@ -14,7 +14,7 @@ const members = async () => {
     }));
 }
 
-const addMember = async ({member}) => {
+const addMember = async (parent,{member}) => {
     const newMembers = await new Member({
       name: member.name,
       email: member.email,
@@ -28,7 +28,7 @@ const addMember = async ({member}) => {
     });
 }
 
-const updateMember = async ({_id,member}) => {
+const updateMember = async (parent,{_id,member}) => {
     return new Promise((resolve,reject)=>{
         Member.findByIdAndUpdate(_id,{$set:{...member}},{new:true})
               .exec((err, res) => {
@@ -37,7 +37,7 @@ const updateMember = async ({_id,member}) => {
     });
 }
 
-const deleteMember = async ({_id}) => {
+const deleteMember = async (parent,{_id}) => {
     return new Promise((resolve,reject)=>{
         Member.findByIdAndDelete(_id)
               .exec((err, res) => {

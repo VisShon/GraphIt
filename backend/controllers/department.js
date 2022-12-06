@@ -1,11 +1,11 @@
-const Department = require('./department');
-const Member = require('./member');
+const Department = require('../models/Department');
+const Member = require('../models/Member');
 
-const department = async ({_id}) => {
+const department = async (parent,{_id}) => {
     return await Department.findOne({_id: _id});
 };
 
-const departments = async () => {
+const departments = async (parent,args) => {
     const data = await Department.find({}).populate();
     return data.map(department => ({
         _id: department._id.toString(),
@@ -16,7 +16,7 @@ const departments = async () => {
   })  
 )};
 
-const addDepartment =  async ({department}) => {
+const addDepartment =  async (parent,{department}) => {
     const newDepartment = await new Department({
         name: department.name,
         status: department.status,
@@ -29,7 +29,7 @@ const addDepartment =  async ({department}) => {
     });
 }
 
-const updateDepartment =  async ({_id,department}) => {
+const updateDepartment =  async (parent,{_id,department}) => {
     return new Promise((resolve,reject)=>{
         Department.findByIdAndUpdate(_id,{$set:{...department}},{new:true})
                   .exec((err, res) => {
@@ -38,7 +38,7 @@ const updateDepartment =  async ({_id,department}) => {
     });
 }
 
-const deleteDepartment =  async ({_id}) => {
+const deleteDepartment =  async (parent,{_id}) => {
     return new Promise((resolve,reject)=>{
         Department.findByIdAndDelete(_id)
                   .exec((err, res) => {
@@ -47,7 +47,7 @@ const deleteDepartment =  async ({_id}) => {
     });
 }
 
-const changeTeamLead = async ({_id,teamLead}) => {
+const changeTeamLead = async (parent,{_id,teamLead}) => {
     return new Promise((resolve,reject)=>{
         Department.findByIdAndUpdate(_id,{$set:{teamLead:teamLead}},{new:true})
               .exec((err, res) => {
@@ -56,7 +56,7 @@ const changeTeamLead = async ({_id,teamLead}) => {
     });
 }
 
-const teamLead = async({_id}) => {
+const teamLead = async(parent,{_id}) => {
     return Member.findOne({_id:_id}).exec()
 }
 

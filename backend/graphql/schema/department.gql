@@ -1,7 +1,7 @@
 type Department{
 	_id: ID!,
 	teamLead: Member,
-	name: String!,
+	name: String,
 	lastMilestone: String,
 	status: String
 }
@@ -25,14 +25,14 @@ type Mutation {
 }
 
 input CreateDepartmentInput {
-    teamLead: Member,
+    teamLead: ID,
 	name: String!,
 	lastMilestone: String,
 	status: String
 }
 
 input ChangeTeamLeadInput {
-    teamLead: Member!,
+    teamLead: ID!,
 }
   
 input UpdateDepartmentInput {

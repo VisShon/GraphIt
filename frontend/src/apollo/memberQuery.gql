@@ -1,0 +1,17 @@
+query getMembers {
+    members{
+        _id,
+        email,
+        phone,
+        name,
+    }
+}
+query getMember($id:ID!){
+    member(_id:$id){
+        _id,
+        email,
+        phone,
+        name,
+    }
+}
+

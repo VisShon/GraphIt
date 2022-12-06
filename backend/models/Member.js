@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const {ObjectID} = require('mongodb');
+const {ObjectId} = require('mongodb');
 
 
 const Schema = mongoose.Schema;
-const MemberScehma = new Schema({
+const Member = new Schema({
   name: {
     type: String,
     required: true
@@ -20,8 +20,4 @@ const MemberScehma = new Schema({
   },
 });
 
-ObjectID.prototype.valueOf = function(){
-  return this.toString();
-}
-
-export default mongoose.model("Member", MemberScehma);
+module.exports = mongoose.model("Member", Member);

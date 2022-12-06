@@ -1,6 +1,6 @@
 type Member{
 	_id:ID!,
-	name: String!,
+	name: String,
 	email: String,
 	phone: String,
 }
@@ -16,8 +16,8 @@ type Query {
 }
 
 type Mutation {
-	addMember(user:CreateMemberInput):Member!,
-	updateMember(_id:ID!,user:UpdateMemberInput):Member!,
+	addMember(member:CreateMemberInput):Member!,
+	updateMember(_id:ID!,member:UpdateMemberInput):Member!,
 	deleteMember(_id:ID!):Member!,
 }
 
