@@ -1,0 +1,24 @@
+#import "./fragments.graphql"
+mutation addDepartment($teamLead:ID!, $name:String, $lastMilestone:String, $status:Status){
+    addDepartment(department:{teamLead:teamLead, name:name, lastMilestone:lastMilestone,status:status}){
+        ...departmentInfo
+    }
+}
+
+mutation updateDepartment($id:ID!, $teamLead:ID, $name:String, $lastMilestone:String, $status:Status){
+    updateDepartment(_id:id, department:{teamLead:teamLead, name:name, lastMilestone:lastMilestone,status:status}){
+        ...departmentInfo
+    }
+}
+
+mutation changeTeamLead($id:ID!, $teamLead:ID){
+    changeTeamLead(_id:id, department:{teamLead:teamLead}){
+        ...departmentInfo
+    }
+}
+
+mutation deleteDepartment($id:ID!){
+    deleteDepartment(_id:id){
+        ...departmentInfo
+    }
+}

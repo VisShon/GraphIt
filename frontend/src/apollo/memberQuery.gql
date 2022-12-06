@@ -1,17 +1,12 @@
+#import "./fragments.graphql"
 query getMembers {
     members{
-        _id,
-        email,
-        phone,
-        name,
+        ...memberInfo
     }
 }
 query getMember($id:ID!){
     member(_id:$id){
-        _id,
-        email,
-        phone,
-        name,
+        ...memberInfo
     }
 }
 

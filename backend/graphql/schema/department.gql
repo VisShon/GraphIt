@@ -28,7 +28,7 @@ input CreateDepartmentInput {
     teamLead: ID,
 	name: String!,
 	lastMilestone: String,
-	status: String
+	status: Status
 }
 
 input ChangeTeamLeadInput {
@@ -38,5 +38,5 @@ input ChangeTeamLeadInput {
 input UpdateDepartmentInput {
 	name: String,
 	lastMilestone: String,
-	status: String
+	status: Status
 } 
