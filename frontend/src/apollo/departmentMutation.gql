@@ -1,4 +1,4 @@
-#import "./fragments.graphql"
+#import "./fragments.gql"
 mutation addDepartment($teamLead:ID!, $name:String, $lastMilestone:String, $status:Status){
     addDepartment(department:{teamLead:teamLead, name:name, lastMilestone:lastMilestone,status:status}){
         ...departmentInfo

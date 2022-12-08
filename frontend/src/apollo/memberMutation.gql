@@ -1,4 +1,4 @@
-#import "./fragments.graphql"
+#import "./fragments.gql"
 mutation addMember($name:String,$email:String,$phone:String){
     addMember(member:{name:name,email:email,phone:phone}){
         ...memberInfo

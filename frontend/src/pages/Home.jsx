@@ -1,31 +1,19 @@
 import React from 'react';
-import Loader from '../components/Loader';
-import { useQuery } from '@apollo/client';
-import { loader } from 'graphql.macro';
-import MemberCard from '../components/MemberCard';
-const getMembers = loader('./memberQuery.gql');
+import AddMember from '../components/AddMember';
+import AddDepartment from '../components/AddDepartment';
+import Member from '../components/Members';
+import Department from '../components/Departments';
 
 function Home() {
-  const {loading, error, data} = useQuery(getMembers);
-
   return (
-    error?<>Something went wrong</>:
-    loading?<Loader/>:
-    <table className='table table-hover mt-3'>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.clients.map((client) => (
-            <MemberCard key={client.id} client={client} />
-          ))}
-        </tbody>
-    </table>  
-
+    <>
+      <div className='d-flex gap-3 mb-4'>
+          <AddMember/>
+          <AddDepartment/>
+      </div>
+      <Member/>
+      <hr/>
+      <Department/>
+    </>
 )}
 export default Home;

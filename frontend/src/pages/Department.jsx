@@ -6,7 +6,7 @@ import DeleteButton from '../components/DeleteButton';
 import EditForm from '../components/EditForm';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-const getDepartment = loader('./departmentQuery.gql');
+const getDepartment = loader('../apollo/departmentQuery.gql');
 
 
 function Department() {
@@ -28,14 +28,11 @@ function Department() {
       <h5 className='mt-3'>Project Status</h5>
       <p className='lead'>{data.department.status}</p>
 
-      <MemberInfo name={data.department.client.name} 
-                  email={data.department.client.email} 
-                  phone={data.department.client.phone} />
+      <MemberInfo name={data.department.teamLead.name} 
+                  email={data.department.teamLead.email} 
+                  phone={data.department.teamLead.phone} />
                   
-      <EditForm name={data.department.name} 
-                milestone={data.department.lastmilestone} 
-                status={data.department.status} 
-                _id={data.department._id} />
+      <EditForm department={data.department} />
 
       <DeleteButton projectId={data.department._id} />
     </div>

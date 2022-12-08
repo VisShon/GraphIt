@@ -1,25 +1,25 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const updateDepartment = loader('./departmentMutation.gql');
-const getDepartment = loader('./departmentQuery.gql');
+const updateDepartment = loader('../apollo/departmentMutation.gql');
+const getDepartment = loader('../apollo/departmentQuery.gql');
 
-function EditForm({name,milestone,status,_id}) {
-    const [name, setName] = useState(name);
-    const [milestone, setMilestone] = useState(milestone);
+function EditForm({department}) {
+    const [name, setName] = useState(department.name);
+    const [milestone, setMilestone] = useState(department.lastMilestone);
     const [status, setStatus] = useState(() => {
-    switch (status) {
+    switch (department.status) {
         case "Not Started": return "NEW";
         case "In Progress": return "INPROGRESS";
         case "Completed": return "COMPLETE";
-        default: throw new Error(`Unknown status: ${status}`);
+        default: throw new Error(`Unknown status: ${department.status}`);
         }
     });
 
     const [onClickHandler] = useMutation(updateDepartment, {
         variables: { 
-            id: _id, 
+            id: department._id, 
             name:name, 
             lastmilestone:milestone, 
             status:status 
@@ -27,7 +27,7 @@ function EditForm({name,milestone,status,_id}) {
         refetchQueries: [{ 
             query: getDepartment, 
             variables: { 
-                id: _id 
+                id: department._id 
             } 
         }],
     });

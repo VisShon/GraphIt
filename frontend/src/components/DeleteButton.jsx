@@ -4,8 +4,8 @@ import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const deleteDepartment = loader('./departmentMutation.gql');
-const getDepartments = loader('./departmentQuery.gql');
+const deleteDepartment = loader('../apollo/departmentMutation.gql');
+const getDepartments = loader('../apollo/departmentQuery.gql');
 
 
 function DeleteButton({_id}) {

@@ -1,4 +1,4 @@
-#import "./fragments.graphql"
+#import "./fragments.gql"
 query getDepartments {
     departments{
         ...departmentInfo
