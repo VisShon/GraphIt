@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import {FaUser} from 'react-icons/fa';
-import Loader from '../components/Loader';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 const addMember = loader('../apollo/memberMutation.gql');
 const getMembers = loader('../apollo/memberQuery.gql');

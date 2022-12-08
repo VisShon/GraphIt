@@ -9,15 +9,33 @@ import Error from './pages/Error';
 import Department from './pages/Department';
 import Profile from './pages/Profile';
 
-const client = ApolloClient({
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        members: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+        departments: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+  },
+});
+const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
-  cache: InMemoryCache(),
+  cache 
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
+      <BrowserRouter>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -25,6 +43,6 @@ root.render(
         <Route path="/profile/:id" element={<Profile/>}/>
         <Route path="/*" element={<Error/>}/>
       </Routes>
-    </ApolloProvider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </ApolloProvider>
 );

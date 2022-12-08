@@ -121,11 +121,11 @@ function AddDepartment() {
                         onChange={(e) => setTeamLead(e.target.value)}
                       >
                         <option value=''>Select Client</option>
-                        {/* {data.clients.map((client) => (
-                          <option key={client.id} value={client.id}>
-                            {client.name}
+                        {data.members.map((member) => (
+                          <option key={member._id} value={member._id}>
+                            {member.name}
                           </option>
-                        ))} */}
+                        ))}
                       </select>
                     </div>
 
