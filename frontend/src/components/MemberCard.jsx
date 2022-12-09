@@ -3,15 +3,15 @@ import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const deleteMember = loader('../apollo/memberMutation.gql');
-const getMembers = loader('../apollo/memberQuery.gql');
-const getDepartments = loader('../apollo/departmentQuery.gql');
+const DeleteMember = loader('../apollo/memberMutation.gql');
+const GetMembers = loader('../apollo/memberQuery.gql');
+const GetDepartments = loader('../apollo/departmentQuery.gql');
 
 function MemberCard({name,email,phone,key}) {
   
-  const [deleteClient] = useMutation(deleteMember, {
+  const [deleteClient] = useMutation(DeleteMember, {
     variables: { id: key },
-    refetchQueries: [{ query: getMembers }, { query: getDepartments }],
+    refetchQueries: [{ query: GetMembers }, { query: GetDepartments }],
   });
   return (
     <>

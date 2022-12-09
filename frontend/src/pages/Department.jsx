@@ -6,13 +6,12 @@ import DeleteButton from '../components/DeleteButton';
 import EditForm from '../components/EditForm';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-const getDepartment = loader('../apollo/departmentQuery.gql');
-
+const GetDepartment = loader('../apollo/departmentQuery.gql');
 
 function Department() {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(getDepartment, { 
-    variables: { id } 
+  const { loading, error, data } = useQuery(GetDepartment, { 
+    variables: { id:id } 
   });
   return (
     error?<>Something went wrong</>:

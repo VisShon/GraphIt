@@ -4,16 +4,16 @@ import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const deleteDepartment = loader('../apollo/departmentMutation.gql');
-const getDepartments = loader('../apollo/departmentQuery.gql');
+const DeleteDepartment = loader('../apollo/departmentMutation.gql');
+const GetDepartments = loader('../apollo/departmentQuery.gql');
 
 
 function DeleteButton({_id}) {
     const navigate = useNavigate();
-    const [onClickHandler] = useMutation(deleteDepartment,{
+    const [onClickHandler] = useMutation(DeleteDepartment,{
         variables:{id:_id},
         onCompleted: () => navigate('/'),
-        refetchQueries: [{ query: getDepartments }],
+        refetchQueries: [{ query: GetDepartments }],
     });
 
     return (

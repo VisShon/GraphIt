@@ -15,7 +15,7 @@ const Department = new Schema({
   },
   lastMilestone: {
     type: String,
-    required: true
+    required: false
   },
   status: {
     type: String,

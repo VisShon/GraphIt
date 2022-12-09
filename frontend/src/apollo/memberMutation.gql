@@ -1,17 +1,17 @@
 #import "./fragments.gql"
-mutation addMember($name:String,$email:String,$phone:String){
+mutation AddMember($name:String!,$email:String!,$phone:String!){
     addMember(member:{name:$name,email:$email,phone:$phone}){
         ...memberInfo
     }
 }
 
-mutation updateMember($id:ID!,$name:String,$email:String,$phone:String){
+mutation UpdateMember($id:ID!,$name:String,$email:String,$phone:String){
     updateMember(_id:$id,member:{name:$name,email:$email,phone:$phone}){
         ...memberInfo
     }
 }
 
-mutation deleteMember($id:ID!){
+mutation DeleteMember($id:ID!){
     updateMember(_id:$id){
         ...memberInfo
     }

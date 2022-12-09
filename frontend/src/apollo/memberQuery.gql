@@ -1,10 +1,10 @@
 #import "./fragments.gql"
-query getMembers {
+query GetMembers {
     members{
         ...memberInfo
     }
 }
-query getMember($id:ID!){
+query GetMember($id:ID!){
     member(_id:$id){
         ...memberInfo
     }

@@ -1,23 +1,23 @@
 #import "./fragments.gql"
-mutation addDepartment($teamLead:ID!, $name:String, $lastMilestone:String, $status:Status){
+mutation AddDepartment($teamLead:ID!, $name:String, $lastMilestone:String, $status:Status){
     addDepartment(department:{teamLead:$teamLead, name:$name, lastMilestone:$lastMilestone,status:$status}){
         ...departmentInfo
     }
 }
 
-mutation updateDepartment($id:ID!, $teamLead:ID, $name:String, $lastMilestone:String, $status:Status){
+mutation UpdateDepartment($id:ID!, $teamLead:ID, $name:String, $lastMilestone:String, $status:Status){
     updateDepartment(_id:$id, department:{teamLead:$teamLead, name:$name, lastMilestone:$lastMilestone,status:$status}){
         ...departmentInfo
     }
 }
 
-mutation changeTeamLead($id:ID!, $teamLead:ID){
+mutation ChangeTeamLead($id:ID!, $teamLead:ID){
     changeTeamLead(_id:$id, department:{teamLead:$teamLead}){
         ...departmentInfo
     }
 }
 
-mutation deleteDepartment($id:ID!){
+mutation DeleteDepartment($id:ID!){
     deleteDepartment(_id:$id){
         ...departmentInfo
     }

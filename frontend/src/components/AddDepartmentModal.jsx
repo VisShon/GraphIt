@@ -1,20 +1,20 @@
 import React,{useState} from 'react';
 import {FaList} from 'react-icons/fa';
-import Loader from '../components/Loader';
+import Loader from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-const addDepartment = loader('../apollo/departmentMutation.gql');
-const getDepartments = loader('../apollo/departmentQuery.gql');
-const getMembers = loader('../apollo/memberQuery.gql');
+const AddDepartment = loader('../apollo/departmentMutation.gql');
+const GetDepartments = loader('../apollo/departmentQuery.gql');
+const GetMembers = loader('../apollo/memberQuery.gql');
 
-function AddDepartment() {
+function AddDepartmentModal() {
   const [name, setName] = useState('');
   const [lastmilestone, setLastMilestone] = useState('');
   const [teamLead, setTeamLead] = useState('');
   const [status, setStatus] = useState('NEW');
 
-  const { loading, error, data } = useQuery(getMembers);
-  const [addDept] = useMutation(addDepartment, {
+  const { loading, error, data } = useQuery(GetMembers);
+  const [addDept] = useMutation(AddDepartment, {
     variables: { 
       name, 
       lastmilestone, 
@@ -22,9 +22,9 @@ function AddDepartment() {
       status 
     },
     update(cache, { data: { addDept } }) {
-      const { departments } = cache.readQuery({ query: getDepartments });
+      const { departments } = cache.readQuery({ query: GetDepartments });
       cache.writeQuery({
-        query: getDepartments,
+        query: GetDepartments,
         data: { departments: [...departments, addDept] },
       });
     },
@@ -145,4 +145,4 @@ function AddDepartment() {
   )
 }
 
-export default AddDepartment
+export default AddDepartmentModal

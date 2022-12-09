@@ -1,6 +1,6 @@
 import React from 'react';
-import AddMember from '../components/AddMember';
-import AddDepartment from '../components/AddDepartment';
+import AddMember from '../components/AddMemberModal';
+import AddDepartment from '../components/AddDepartmentModal';
 import Member from '../components/Members';
 import Department from '../components/Departments';
 

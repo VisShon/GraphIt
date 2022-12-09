@@ -3,10 +3,10 @@ import Loader from '../components/Loader';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
 import DepartmentCard from '../components/DepartmentCard';
-const getDepartments = loader('../apollo/departmentQuery.gql');
+const GetDepartments = loader('../apollo/departmentQuery.gql');
 
 function Departments() {
-  const {loading, error, data} = useQuery(getDepartments);
+  const {loading, error, data} = useQuery(GetDepartments);
 
   return (
     error?<>Something went wrong</>:

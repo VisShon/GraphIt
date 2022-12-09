@@ -1,26 +1,26 @@
 import React,{useState} from 'react';
 import {FaUser} from 'react-icons/fa';
-import { useMutation } from '@apollo/client';
+import { useMutation} from '@apollo/client';
 import { loader } from 'graphql.macro';
-const addMember = loader('../apollo/memberMutation.gql');
-const getMembers = loader('../apollo/memberQuery.gql');
+const AddMember = loader('../apollo/memberMutation.gql');
+const GetMembers = loader('../apollo/memberQuery.gql');
 
 
-function AddMember() {
+function AddMemberModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const [addMem] = useMutation(addMember, {
+  const [addMem] = useMutation(AddMember, {
     variables: { 
       name, 
       email, 
       phone, 
     },
     update(cache, { data: { addMem } }) {
-      const { members } = cache.readQuery({ query: getMembers });
+      const { members } = cache.readQuery({ query: GetMembers });
       cache.writeQuery({
-        query: getMembers,
+        query: GetMembers,
         data: { members: [...members, addMem] },
       });
     },
@@ -118,4 +118,4 @@ function AddMember() {
   )
 }
 
-export default AddMember
+export default AddMemberModal

@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const updateDepartment = loader('../apollo/departmentMutation.gql');
-const getDepartment = loader('../apollo/departmentQuery.gql');
+const UpdateDepartment = loader('../apollo/departmentMutation.gql');
+const GetDepartment = loader('../apollo/departmentQuery.gql');
 
 function EditForm({department}) {
     const [name, setName] = useState(department.name);
@@ -17,7 +17,7 @@ function EditForm({department}) {
         }
     });
 
-    const [onClickHandler] = useMutation(updateDepartment, {
+    const [onClickHandler] = useMutation(UpdateDepartment, {
         variables: { 
             id: department._id, 
             name:name, 
@@ -25,7 +25,7 @@ function EditForm({department}) {
             status:status 
         },
         refetchQueries: [{ 
-            query: getDepartment, 
+            query: GetDepartment, 
             variables: { 
                 id: department._id 
             } 

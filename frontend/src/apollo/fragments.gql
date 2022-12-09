@@ -8,7 +8,7 @@ fragment memberInfo on Member{
 fragment departmentInfo on Department{
     _id,
     teamLead{
-        id
+        _id
         name
         email
         phone

@@ -1,11 +1,11 @@
 #import "./fragments.gql"
-query getDepartments {
+query GetDepartments {
     departments{
         ...departmentInfo
     }
 }
-query getDepartment($id:ID!){
-    member(_id:$id){
+query GetDepartment($id:ID!){
+    department(_id:$id){
         ...departmentInfo
     }
 }
