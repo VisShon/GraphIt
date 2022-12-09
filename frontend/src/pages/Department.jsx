@@ -22,18 +22,18 @@ function Department() {
       </Link>
 
       <h1>{data.department.name}</h1>
-      <p>{data.department.lastmilestone}</p>
+      {/* <p>{data.department.lastMilestone}</p> */}
 
       <h5 className='mt-3'>Project Status</h5>
       <p className='lead'>{data.department.status}</p>
 
-      <MemberInfo name={data.department.teamLead.name} 
+      {/* <MemberInfo name={data.department.teamLead.name} 
                   email={data.department.teamLead.email} 
-                  phone={data.department.teamLead.phone} />
+                  phone={data.department.teamLead.phone} /> */}
                   
-      <EditForm department={data.department} />
+      {/* <EditForm department={data.department} /> */}
 
-      <DeleteButton projectId={data.department._id} />
+      <DeleteButton _id={data.department._id} />
     </div>
   )
 }

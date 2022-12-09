@@ -14,7 +14,7 @@ function AddDepartmentModal() {
   const [status, setStatus] = useState('NEW');
 
   const { loading, error, data } = useQuery(GetMembers);
-  console.log(JSON.stringify(error, null, 2));
+  
   const [addDept] = useMutation(AddDepartment, {
     variables: { 
       name, 
@@ -121,7 +121,7 @@ function AddDepartmentModal() {
                         value={teamLead}
                         onChange={(e) => setTeamLead(e.target.value)}
                       >
-                        <option value=''>Select Client</option>
+                        <option value=''>Select Member</option>
                         {data.members.map((member) => (
                           <option key={member._id} value={member._id}>
                             {member.name}

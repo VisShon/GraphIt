@@ -7,7 +7,7 @@ const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 function Members() {
   const {loading, error, data} = useQuery(GetMembers);
-  console.log(JSON.stringify(error, null, 2));
+  console.log(data);
   return (
     error?<>Something went wrong</>:
     loading?<Loader/>:
@@ -21,14 +21,13 @@ function Members() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            {data.members.map((member) => (
-              <MemberCard key={member.id} 
+            {data.members.map((member,index) => (
+              <MemberCard _id={member._id} 
                           name={member.name} 
                           email={member.email} 
-                          phone={member.phone}/>
+                          phone={member.phone}
+                          key={index}/>
             ))}
-          </tr>
         </tbody>
     </table>  
 

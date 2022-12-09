@@ -7,14 +7,14 @@ const DeleteMember = loader('../apollo/Member/deleteMember.gql');
 const GetMembers = loader('../apollo/Member/getMembers.gql');
 const GetDepartments = loader('../apollo/Department/getDepartments.gql');
 
-function MemberCard({name,email,phone,key}) {
+function MemberCard({name,email,phone,_id}) {
   
-  const [deleteClient] = useMutation(DeleteMember, {
-    variables: { id: key },
+  const [deleteClient,{error}] = useMutation(DeleteMember, {
+    variables: { id: _id },
     refetchQueries: [{ query: GetMembers }, { query: GetDepartments }],
   });
   return (
-    <>
+    <tr>
       <td>{name}</td>
       <td>{email}</td>
       <td>{phone}</td>
@@ -23,7 +23,7 @@ function MemberCard({name,email,phone,key}) {
           <FaTrash />
         </button>
       </td>
-    </>
+    </tr>
   )
 }
 

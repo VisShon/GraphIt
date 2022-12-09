@@ -7,13 +7,13 @@ import Department from '../components/Departments';
 function Home() {
   return (
     <>
-      <div className='d-flex gap-3 mb-4'>
+      <div className='d-flex gap-3 mb-4 justify-content-center'>
           <AddMember/>
           <AddDepartment/>
       </div>
-      <Member/>
-      <hr/>
       <Department/>
+      <hr/>
+      <Member/>
     </>
 )}
 export default Home;
