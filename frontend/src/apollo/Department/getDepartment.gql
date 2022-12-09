@@ -1,0 +1,7 @@
+#import "../departmentFragment.gql"
+query GetDepartment($id:ID!){
+    department(_id:$id){
+        ...departmentInfo
+    }
+}
+

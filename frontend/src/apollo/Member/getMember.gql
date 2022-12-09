@@ -1,0 +1,6 @@
+#import "../memberFragment.gql"
+query GetMember($id:ID!){
+    member(_id:$id){
+        ...memberInfo
+    }
+}

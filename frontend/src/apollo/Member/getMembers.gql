@@ -1,0 +1,6 @@
+#import "../memberFragment.gql"
+query GetMembers {
+    members{
+        ...memberInfo
+    }
+}

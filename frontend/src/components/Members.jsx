@@ -3,11 +3,11 @@ import Loader from '../components/Loader';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
 import MemberCard from '../components/MemberCard';
-const GetMembers = loader('../apollo/memberQuery.gql');
+const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 function Members() {
   const {loading, error, data} = useQuery(GetMembers);
-
+  console.log(JSON.stringify(error, null, 2));
   return (
     error?<>Something went wrong</>:
     loading?<Loader/>:

@@ -1,0 +1,6 @@
+#import "../memberFragment.gql"
+mutation UpdateMember($id:ID!,$name:String,$email:String,$phone:String){
+    updateMember(_id:$id,member:{name:$name,email:$email,phone:$phone}){
+        ...memberInfo
+    }
+}

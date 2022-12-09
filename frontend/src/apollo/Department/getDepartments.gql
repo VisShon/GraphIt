@@ -1,0 +1,6 @@
+#import "../departmentFragment.gql"
+query GetDepartments {
+    departments{
+        ...departmentInfo
+    }
+}

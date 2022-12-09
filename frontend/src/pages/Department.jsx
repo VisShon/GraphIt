@@ -6,7 +6,7 @@ import DeleteButton from '../components/DeleteButton';
 import EditForm from '../components/EditForm';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-const GetDepartment = loader('../apollo/departmentQuery.gql');
+const GetDepartment = loader('../apollo/Department/getDepartment.gql');
 
 function Department() {
   const { id } = useParams();

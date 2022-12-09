@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const UpdateDepartment = loader('../apollo/departmentMutation.gql');
-const GetDepartment = loader('../apollo/departmentQuery.gql');
+const UpdateDepartment = loader('../apollo/Department/updateDepartment.gql');
+const GetDepartment = loader('../apollo/Department/getDepartment.gql');
 
 function EditForm({department}) {
     const [name, setName] = useState(department.name);

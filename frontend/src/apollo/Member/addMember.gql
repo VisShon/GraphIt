@@ -1,0 +1,6 @@
+#import "../memberFragment.gql"
+mutation AddMember($name:String!,$email:String!,$phone:String!){
+    addMember(member:{name:$name,email:$email,phone:$phone}){
+        ...memberInfo
+    }
+}

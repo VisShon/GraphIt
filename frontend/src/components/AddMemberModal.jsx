@@ -2,8 +2,8 @@ import React,{useState} from 'react';
 import {FaUser} from 'react-icons/fa';
 import { useMutation} from '@apollo/client';
 import { loader } from 'graphql.macro';
-const AddMember = loader('../apollo/memberMutation.gql');
-const GetMembers = loader('../apollo/memberQuery.gql');
+const AddMember = loader('../apollo/Member/addMember.gql');
+const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 
 function AddMemberModal() {

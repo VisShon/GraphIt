@@ -1,0 +1,6 @@
+#import "../departmentFragment.gql"
+mutation ChangeTeamLead($id:ID!, $teamLead:ID){
+    changeTeamLead(_id:$id, department:{teamLead:$teamLead}){
+        ...departmentInfo
+    }
+}

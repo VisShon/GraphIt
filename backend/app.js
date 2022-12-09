@@ -28,8 +28,8 @@ app.use(errorHandler);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/graphql', graphqlHTTP({
+app.use('/',cors(corsOptions),indexRouter);
+app.use('/graphql',cors(corsOptions),graphqlHTTP({
     schema: schema,
     graphiql: process.env.NODE_ENV !== 'production'
 }));

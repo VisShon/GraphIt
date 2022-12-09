@@ -1,0 +1,6 @@
+#import "../departmentFragment.gql"
+mutation DeleteDepartment($id:ID!){
+    deleteDepartment(_id:$id){
+        ...departmentInfo
+    }
+}

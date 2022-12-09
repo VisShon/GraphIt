@@ -3,9 +3,9 @@ import { FaTrash } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
-const DeleteMember = loader('../apollo/memberMutation.gql');
-const GetMembers = loader('../apollo/memberQuery.gql');
-const GetDepartments = loader('../apollo/departmentQuery.gql');
+const DeleteMember = loader('../apollo/Member/deleteMember.gql');
+const GetMembers = loader('../apollo/Member/getMembers.gql');
+const GetDepartments = loader('../apollo/Department/getDepartments.gql');
 
 function MemberCard({name,email,phone,key}) {
   

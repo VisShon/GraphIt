@@ -3,9 +3,9 @@ import {FaList} from 'react-icons/fa';
 import Loader from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-const AddDepartment = loader('../apollo/departmentMutation.gql');
-const GetDepartments = loader('../apollo/departmentQuery.gql');
-const GetMembers = loader('../apollo/memberQuery.gql');
+const AddDepartment = loader('../apollo/Department/addDepartment.gql');
+const GetDepartments = loader('../apollo/Department/getDepartments.gql');
+const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 function AddDepartmentModal() {
   const [name, setName] = useState('');
@@ -14,6 +14,7 @@ function AddDepartmentModal() {
   const [status, setStatus] = useState('NEW');
 
   const { loading, error, data } = useQuery(GetMembers);
+  console.log(JSON.stringify(error, null, 2));
   const [addDept] = useMutation(AddDepartment, {
     variables: { 
       name, 
