@@ -109,6 +109,13 @@ function AddMemberModal() {
                 >
                   Submit
                 </button>
+                <a
+                  href='http://localhost:8000/auth/google'
+                  target="popup" 
+                  className='btn btn-success mx-2'
+                >
+                  Google
+                </a>
               </form>
             </div>
           </div>

@@ -7,7 +7,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Error from './pages/Error';
 import Department from './pages/Department';
-import Profile from './pages/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const cache = new InMemoryCache({
@@ -28,6 +27,7 @@ const cache = new InMemoryCache({
     },
   },
 });
+
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
   cache 
@@ -35,13 +35,12 @@ const client = new ApolloClient({
 
 root.render(
   <ApolloProvider client={client}>
-      <BrowserRouter>
-      <Navbar/>
+    <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/department/:id" element={<Department/>}/>
-        <Route path="/profile/:id" element={<Profile/>}/>
-        <Route path="/*" element={<Error/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/error" element={<Error />} />
+        <Route path="/department" element={<Department />} />
       </Routes>
     </BrowserRouter>
   </ApolloProvider>

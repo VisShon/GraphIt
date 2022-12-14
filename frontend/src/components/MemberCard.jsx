@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash,FaEdit } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { loader } from 'graphql.macro';
 
@@ -13,6 +13,8 @@ function MemberCard({name,email,phone,_id}) {
     variables: { id: _id },
     refetchQueries: [{ query: GetMembers }, { query: GetDepartments }],
   });
+
+  
   return (
     <tr>
       <td>{name}</td>
@@ -21,6 +23,9 @@ function MemberCard({name,email,phone,_id}) {
       <td>
         <button className='btn btn-danger btn-sm' onClick={deleteClient}>
           <FaTrash />
+        </button>
+        <button className='btn btn-secondary btn-sm mx-3' onClick={deleteClient}>
+          <FaEdit />
         </button>
       </td>
     </tr>
