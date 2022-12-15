@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(errorHandler);
 app.use(cookieParser());
 app.use(session({
-    secret: 'GraphIt',
+    secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true }

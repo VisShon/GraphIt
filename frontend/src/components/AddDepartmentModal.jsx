@@ -9,16 +9,16 @@ const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 function AddDepartmentModal() {
   const [name, setName] = useState('');
-  const [lastmilestone, setLastMilestone] = useState('');
+  const [lastMilestone, setLastMilestone] = useState('');
   const [teamLead, setTeamLead] = useState('');
   const [status, setStatus] = useState('NEW');
 
   const { loading, error, data } = useQuery(GetMembers);
-  
+  console.log(teamLead);
   const [addDept] = useMutation(AddDepartment, {
     variables: { 
       name, 
-      lastmilestone, 
+      lastMilestone, 
       teamLead, 
       status 
     },
@@ -33,10 +33,10 @@ function AddDepartmentModal() {
 
 
   const onSubmit = () => {
-    if (name === '' || lastmilestone === '' || status === '') {
+    if (name === '' || lastMilestone === '' || status === '') {
       return alert('Please fill in all fields');
     }
-    addDept(name, lastmilestone, teamLead, status);
+    addDept(name, lastMilestone, teamLead, status);
     setName('');
     setLastMilestone('');
     setStatus('NEW');
@@ -95,7 +95,7 @@ function AddDepartmentModal() {
                       <textarea
                         className='form-control'
                         id='lasmilestone'
-                        value={lastmilestone}
+                        value={lastMilestone}
                         onChange={(e) => setLastMilestone(e.target.value)}
                       ></textarea>
                     </div>

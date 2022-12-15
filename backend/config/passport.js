@@ -29,7 +29,7 @@ passport.use('google',new Strategy({
                     name: newUser.name,
                 },process.env.JWT_SECRET);
 
-                done(null,newUser,{message:"Auth Successfull",token: token})
+                return done(null,newUser,{message:"Auth Successfull",token: token})
             }
             else{
                 const token = await jwt.sign({
@@ -38,12 +38,12 @@ passport.use('google',new Strategy({
                     phone: obj.phone,
                     name: obj.name,
                 },process.env.JWT_SECRET);
-                done(null,obj,{message:"Auth Successfull",token: token})
+                return done(null,obj,{message:"Auth Successfull",token: token})
             }
         }
         catch (err){
             console.error(err);
-            done(err,false,{message: "Internal Server Error"});
+            return done(err,false,{message: "Internal Server Error"});
         }
     }
 ));

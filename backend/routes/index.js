@@ -11,6 +11,13 @@ router.get('/auth/google',
       [ 'email', 'profile' ] }
 ));
 
+router.get('/auth/callback/success', (req , res) => {
+  res.header('Access-Control-Allow-Credentials', true);
+  if(!req.user)
+    res.redirect('/auth/callback/failure');
+  res.send(JSON.stringify(req.user));
+});
+
 router.get( '/auth/google/callback',
     passport.authenticate( 'google', {
         successRedirect: 'http://localhost:3000/',

@@ -2,7 +2,9 @@ const Department = require('../models/Department');
 const Member = require('../models/Member');
 
 const department = async (parent,{_id}) => {
-    return await Department.findOne({_id: _id});
+    const data = await Department.findById(_id).populate({tea});
+    
+    return data;
 };
 
 const departments = async (parent,args) => {
@@ -20,6 +22,8 @@ const addDepartment =  async (parent,{department}) => {
     const newDepartment = await new Department({
         name: department.name,
         status: department.status,
+        lastMilestone: department.lastMilestone,
+        teamLead: department.teamLead,
     });
 
     return new Promise((resolve, reject) => {

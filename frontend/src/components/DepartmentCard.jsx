@@ -7,7 +7,6 @@ function DepartmentCard({name,status,_id}) {
         <div className='card-body'>
           <div className='d-flex justify-content-between align-items-center'>
             <h5 className='card-title'>{name}</h5>
-
             <a className='btn btn-light' href={`/department/${_id}`}>
               View
             </a>

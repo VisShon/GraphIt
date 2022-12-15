@@ -40,7 +40,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/error" element={<Error />} />
-        <Route path="/department" element={<Department />} />
+        <Route path="/department/:id" element={<Department />} />
       </Routes>
     </BrowserRouter>
   </ApolloProvider>

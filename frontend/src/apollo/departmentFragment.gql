@@ -1,10 +1,10 @@
 fragment departmentInfo on Department{
     _id,
     teamLead{
-        _id
-        name
-        email
-        phone
+        _id,
+        name,
+        email,
+        phone,
     },
     name,
     lastMilestone,
