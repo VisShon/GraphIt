@@ -13,7 +13,6 @@ function Department() {
   const { loading, error, data } = useQuery(GetDepartment, { 
     variables: { id:id } 
   });
-  console.log(JSON.stringify(data, null, 2));
   return (
     error?<>Something went wrong</>:
     loading?<Loader/>:
@@ -28,9 +27,9 @@ function Department() {
       <h5 className='mt-3'>Project Status</h5>
       <p className='lead'>{data.department.status}</p>
 
-      {/* <MemberInfo name={data.department.teamLead.name} 
+      <MemberInfo name={data.department.teamLead.name} 
                   email={data.department.teamLead.email} 
-                  phone={data.department.teamLead.phone} /> */}
+                  phone={data.department.teamLead.phone} />
                   
       <EditForm department={data.department} />
 

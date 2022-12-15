@@ -11,6 +11,7 @@ const Department = new Schema({
   },
   name: {
     type: String,
+    unique: true,
     required: true
   },
   lastMilestone: {
@@ -19,7 +20,6 @@ const Department = new Schema({
   },
   status: {
     type: String,
-    unique: true,
     required: true
   },
 });

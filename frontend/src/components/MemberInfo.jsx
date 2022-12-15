@@ -7,13 +7,20 @@ function MemberInfo({name,email,phone}) {
       <h5 className='mt-5'>Team Lead</h5>
       <ul className='list-group'>
         <li className='list-group-item'>
-          <FaIdBadge className='icon' /> {name}
+          <FaIdBadge className='icon' /> 
+          {name}
         </li>
         <li className='list-group-item'>
-          <FaEnvelope className='icon' /> {email}
+          <FaEnvelope className='icon' /> 
+          <a href={`mailto:${email}`}>
+           {email}
+          </a>
         </li>
         <li className='list-group-item'>
-          <FaPhone className='icon' /> {phone}
+          <FaPhone className='icon' />
+          <a href={`tel:${phone}`}>
+           {phone}
+          </a>
         </li>
       </ul>
     </>

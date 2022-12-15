@@ -8,7 +8,6 @@ function Home() {
   const onClick = async() => {
     const res = await axios.get('http://localhost:8000/auth/callback/success',
     {withCredentials:true})
-    console.log(res);
   }
   return (
     <>

@@ -11,7 +11,7 @@ function AddMemberModal() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const [addMem] = useMutation(AddMember, {
+  const [addMem,{error}] = useMutation(AddMember, {
     variables: { 
       name, 
       email, 
@@ -25,7 +25,6 @@ function AddMemberModal() {
       });
     },
   });
-
   const onSubmit = () => {
     if (name === '' || email === '' || phone === '') {
       return alert('Please fill in all fields');

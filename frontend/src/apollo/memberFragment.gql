@@ -1,6 +1,6 @@
 fragment memberInfo on Member{
-    _id,
-    name,
-    email,
-    phone,
+    _id
+    name
+    email
+    phone
 }

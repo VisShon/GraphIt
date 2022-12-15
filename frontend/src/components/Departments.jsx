@@ -13,13 +13,11 @@ function Departments() {
     <>
       {data.departments.length > 0 ? (
         <div className='row mt-4 mx-4'>
-          {data.departments.map((department) => (
-            <>
-              <DepartmentCard key={department.id} 
+          {data.departments.map((department,index) => (
+            <DepartmentCard key={index} 
                             name={department.name} 
                             status={department.status} 
                             _id={department._id}/>
-            </>
           ))}
         </div>
       ) : (
