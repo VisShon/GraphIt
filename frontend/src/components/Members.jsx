@@ -7,7 +7,6 @@ const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 function Members() {
   const {loading, error, data} = useQuery(GetMembers);
-  console.log(data);
   return (
     error?<>Something went wrong</>:
     loading?<Loader/>:

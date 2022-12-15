@@ -1,6 +1,6 @@
 #import "../departmentFragment.gql"
-mutation UpdateDepartment($id:ID!, $teamLead:ID, $name:String, $lastMilestone:String, $status:Status){
-    updateDepartment(_id:$id, department:{teamLead:$teamLead, name:$name, lastMilestone:$lastMilestone,status:$status}){
+mutation UpdateDepartment($id:ID!,$name:String, $lastMilestone:String, $status:Status){
+    updateDepartment(_id:$id, department:{name:$name, lastMilestone:$lastMilestone,status:$status}){
         ...departmentInfo
     }
 }

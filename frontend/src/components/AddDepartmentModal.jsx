@@ -14,7 +14,6 @@ function AddDepartmentModal() {
   const [status, setStatus] = useState('NEW');
 
   const { loading, error, data } = useQuery(GetMembers);
-  console.log(teamLead);
   const [addDept] = useMutation(AddDepartment, {
     variables: { 
       name, 

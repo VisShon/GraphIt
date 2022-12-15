@@ -1,6 +1,6 @@
 #import "../memberFragment.gql"
 mutation DeleteMember($id:ID!){
-    updateMember(_id:$id){
+    deleteMember(_id:$id){
         ...memberInfo
     }
 }

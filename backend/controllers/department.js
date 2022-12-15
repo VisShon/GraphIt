@@ -2,9 +2,8 @@ const Department = require('../models/Department');
 const Member = require('../models/Member');
 
 const department = async (parent,{_id}) => {
-    const data = await Department.findById(_id).populate({tea});
-    
-    return data;
+    return await Department.findById(_id)
+                            .populate('teamLead').exec();
 };
 
 const departments = async (parent,args) => {

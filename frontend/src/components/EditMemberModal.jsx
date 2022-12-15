@@ -1,27 +1,28 @@
 import React,{useState} from 'react';
-import {FaUser} from 'react-icons/fa';
+import {FaEdit} from 'react-icons/fa';
 import { useMutation} from '@apollo/client';
 import { loader } from 'graphql.macro';
-const AddMember = loader('../apollo/Member/addMember.gql');
+const UpdateMember = loader('../apollo/Member/updateMember.gql');
 const GetMembers = loader('../apollo/Member/getMembers.gql');
 
 
-function AddMemberModal() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+function EditMemberModal({id,oldName,oldEmail,oldPhone}) {
+  const [name, setName] = useState(oldName);
+  const [email, setEmail] = useState(oldEmail);
+  const [phone, setPhone] = useState(oldPhone);
 
-  const [addMem] = useMutation(AddMember, {
+  const [editmem] = useMutation(UpdateMember, {
     variables: { 
+      id,
       name, 
       email, 
       phone, 
     },
-    update(cache, { data: { addMem } }) {
-      const { members } = cache.readQuery({ query: GetMembers });
+    update(cache, { data: { editmem } }) {
+      const { members } = cache.readQuery({ query: UpdateMember });
       cache.writeQuery({
         query: GetMembers,
-        data: { members: [...members, addMem] },
+        data: { members: [...members, editmem] },
       });
     },
   });
@@ -30,7 +31,7 @@ function AddMemberModal() {
     if (name === '' || email === '' || phone === '') {
       return alert('Please fill in all fields');
     }
-    addMem(name, email, phone);
+    editmem(name, email, phone);
     setName('');
     setEmail('');
     setPhone('');
@@ -40,27 +41,24 @@ function AddMemberModal() {
     <>
       <button
         type='button'
-        className='btn btn-secondary'
+        className='btn btn-secondary btn-sm mx-3'
         data-bs-toggle='modal'
-        data-bs-target='#addMemberModal'
+        data-bs-target='#editMemberModal'
       >
-        <div className='d-flex align-items-center'>
-          <FaUser className='icon' />
-          <div>Add Member</div>
-        </div>
+        <FaEdit />
       </button>
 
       <div
         className='modal fade'
-        id='addMemberModal'
-        aria-labelledby='addMemberModalLabel'
+        id='editMemberModal'
+        aria-labelledby='editMemberModalLabel'
         aria-hidden='true'
       >
         <div className='modal-dialog'>
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='addClientModalLabel'>
-                Add Member
+                Edit Member
               </h5>
               <button
                 type='button'
@@ -109,12 +107,6 @@ function AddMemberModal() {
                 >
                   Submit
                 </button>
-                <a
-                  href='http://localhost:8000/auth/google'
-                  className='btn btn-success mx-2'
-                >
-                  Google
-                </a>
               </form>
             </div>
           </div>
@@ -124,4 +116,4 @@ function AddMemberModal() {
   )
 }
 
-export default AddMemberModal
+export default EditMemberModal

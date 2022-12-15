@@ -32,7 +32,7 @@ function Department() {
                   email={data.department.teamLead.email} 
                   phone={data.department.teamLead.phone} /> */}
                   
-      {/* <EditForm department={data.department} /> */}
+      <EditForm department={data.department} />
 
       <DeleteButton _id={data.department._id} />
     </div>

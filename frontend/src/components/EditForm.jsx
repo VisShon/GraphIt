@@ -8,20 +8,13 @@ const GetDepartment = loader('../apollo/Department/getDepartment.gql');
 function EditForm({department}) {
     const [name, setName] = useState(department.name);
     const [milestone, setMilestone] = useState(department.lastMilestone);
-    const [status, setStatus] = useState(() => {
-    switch (department.status) {
-        case "Not Started": return "NEW";
-        case "In Progress": return "INPROGRESS";
-        case "Completed": return "COMPLETE";
-        default: throw new Error(`Unknown status: ${department.status}`);
-        }
-    });
+    const [status, setStatus] = useState(department.status);
 
     const [onClickHandler] = useMutation(UpdateDepartment, {
         variables: { 
             id: department._id, 
             name:name, 
-            lastmilestone:milestone, 
+            lastMilestone:milestone, 
             status:status 
         },
         refetchQueries: [{ 
@@ -70,9 +63,9 @@ function EditForm({department}) {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 >
-                <option value="new">Not Started</option>
-                <option value="progress">In Progress</option>
-                <option value="completed">Completed</option>
+                <option value="NEW">Not Started</option>
+                <option value="INPROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
                 </select>
             </div>
 
