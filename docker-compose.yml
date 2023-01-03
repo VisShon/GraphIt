@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  frontend:
+    depends_on:
+      - backend
+    build: 
+      context: ./frontend
+      dockerfile: DockerFile
+    ports: 
+      - 3000:3000
+    networks:
+      - frontend-backend
+  backend:
+    depends_on:
+      - mongodb
+    build: 
+      context: ./backend
+      dockerfile: DockerFile
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - NODE_ENV=$NODE_ENV
+      - MONGO_DB_URL=$MONGO_DB_URL
+      - GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+      - SECRET_KEY=$SECRET_KEY
+    ports:
+      - 8000:8000
+    networks:
+      - backend-db
+      - frontend-backend
+  mongodb:
+    image: mongo:4.2.0
+    restart: unless-stopped
+    volumes:
+      - db:/data/db
+    networks:
+      - backend-db
+    expose:
+      - 27017
+
+volumes:
+  db:
+networks:
+  backend-db:
+  frontend-backend:
